@@ -1,20 +1,6 @@
-def det(a: list):
-    if len(a) == 1:
-        return a[0][0]
-    else:
-        adding = True
-        result = 0
-        for i in range(len(a)):
-            minor = [a[j + 1][:i] + a[j + 1][i + 1:] for j in range(len(a) - 1)]
-            if adding:
-                result += a[0][i] * det(minor)
-            else:
-                result -= a[0][i] * det(minor)
-            adding = not adding
-        return result
+from det import det
 
-
-def to_row(vector: str):
+def to_row(vector: str) -> list[int | float]:
     row_str = vector.split(' ')
     row_float = []
     for num in row_str:
@@ -25,7 +11,7 @@ def to_row(vector: str):
     return row_float
 
 
-def safe_input(message: str):
+def safe_input(message: str) -> list[int | float]:
     """Catches invalid input to return a list of numbers"""
     while True:
         try:
